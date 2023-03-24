@@ -27,26 +27,6 @@ del score[1]
 print(score)
 """
 
-# 리스트 주요 함수(메서드)
-"""
-# 리스트의 요소 추가
-a = [1, 2, 3]
-a.append(4)
-print(a)
-
-a.insert(1, 5)
-print(a)
-
-# 리스트 요소 삭제
-a.pop()
-print(a)
-
-car = ['모닝', 'BMW', '벤츠', '스포티지']
-car.remove('BMW')
-print(car)
-print(len(car))
-"""
-
 # for 변수 in 리스트
 """
 number = [12, 99, 25, 73, 50]
@@ -63,13 +43,14 @@ for n in number:
         print(n)
 
 print()
+
 languages = ['python', 'C', 'Java', 'Javascript']
 
 for lang in languages:
     if lang in ['python', 'Javascript']:
-        print("%s need interpreter" % lang)
+        print(f'{lang} need interpreter')
     elif lang in ['C', 'Java']:
-        print("%s need compiler" % lang)
+        print("f'{lang} need compiler')
 """
 
 # 리스트의 연산
@@ -128,8 +109,28 @@ print("최고 점수 위치:", max_idx)
 print("최고 점수 위치:", min_idx)
 """
 
-# 리스트 복사
+# 리스트 주요 함수(메서드)
 """
+# 리스트의 요소 추가
+a = [1, 2, 3]
+a.append(4)
+print(a)
+
+a.insert(1, 5)
+print(a)
+
+# 리스트 요소 삭제
+a.pop()
+print(a)
+
+car = ['모닝', 'BMW', '벤츠', '스포티지']
+car.remove('BMW')
+print(car)
+print(len(car))
+"""
+
+# 리스트 복사
+
 d = [1, 2, 3, 4]
 d2 = []
 print("d =", d)
@@ -158,7 +159,7 @@ print("d4 =", d4)
 
 dd4 = [i for i in d if i % 2 == 1] 
 print("dd4 =", dd4)
-"""
+
 
 # 2차원 리스트의 선언 및 생성
 """

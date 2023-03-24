@@ -70,13 +70,12 @@ print(str(row_num) + "개의 줄이 필요합니다.")
     
 # 윤년을 계산하는 프로그램
 """
-x = input("연도를 입력하세요: ")
-year = int(x)
+year = int(input("연도를 입력하세요: "))
 
 if (year % 4 == 0) and (year % 100 != 0) or (year % 400 == 0):
-    print("%d년은 윤년입니다." % year)
+    print(f"{year}년은 윤년입니다.")
 else:
-    print("%d년은 평년입니다." % year)
+    print(f'{year}년은 평년입니다.')
 """
     
 # 교통 수단 이용하기
@@ -120,8 +119,8 @@ elif bmi >= 25 and bmi < 30:
     print("과체중입니다.")
 else:
     print("비만입니다.")
-
 """
+
 # 1부터 10까지 합계
 """
 i = 0
@@ -156,7 +155,7 @@ while True:
         print("정상 답변이 아닙니다.")
 """
 
-
+"""
 # 커피 자동판매기 프로그램
 coffee = 5
 
@@ -176,6 +175,128 @@ while True:
     if coffee == 0:
         print("커피가 모두 소진되었습니다. 판매를 중지합니다.")
         break
+
+"""
+
+# 1부터 10까지 합계
+"""
+for i in range(1, 11, 2):
+    print(i, end=' ')
+
+for i in range(1, 11):
+    if i % 2 == 1:
+        print(i, end=' ')
+
+sum_v = 0
+for i in range(1, 11):
+    sum_v = sum_v + i
+print(sum_v)
+
+sum_v2 = 0
+for i in range(1, 11):
+    if i % 2 == 0:
+        sum_v2 = sum_v2 + i
+print("짝수 합계:", sum_v2)
+
+# 구구단
+dan = int(input("단을 입력하세요: "))
+for i in range(1, 10):
+    print(f'{dan} x {i} = {dan*i}')
+"""
+
+# 중첩 for
+"""
+for i in range(5):
+    for j in range(5):
+        print('$', end='')
+    print()
+print('='*30)
+for i in range(0, 5):
+    for j in range(0, i+1):
+        print('*', end='')
+    print()
+print('='*30)
+
+for i in range(0, 5):
+    for j in range(0, 5-i):
+        print('*', end='')
+    print()
+print('='*30)
+
+for i in range(0, 5):
+    for j in range(1, 6):
+        print(5*i+j, end=' ')
+    print()
+print('='*30)
+"""
+
+# 구구단(전체)
+"""
+for i in range(2, 10):
+    print('[', i, '단]')
+    for j in range(1, 10):
+        print(f"{i} * {j} = {i*j}")
+print('='*30)
+
+for i in range(1, 10):
+    for j in range(2, 10):
+        print(f"{j} * {i} = {j*i}", end=' | ')
+    print()
+print('='*30)
+"""
+"""
+start_dan = int(input("시작단 입력: "))
+end_dan = int(input("끝단 입력: "))
+
+result_val = ''
+for i in range(start_dan, end_dan+1):
+    for j in range(1, 10):
+        #current_val = '{}x{}={}\n'.format(i, j, i*j)
+        current_val = f'{i} x {j} = {i * j}\n'
+        result_val = result_val + current_val
+print(result_val)
+
+style = input("단을 구분할 줄 모양 입력: ")
+
+result_val = ''
+for i in range(2, 10):
+    for j in range(1, 10):
+        current_val = f'{i} x {j} = {i * j}\n'
+        result_val = result_val + current_val
+    if i <= 9:
+        result_val = result_val + style + '\n'
+print(result_val)
+"""
+    
+# 자리배치도 프로그램(완성)
+"""
+print("*** 자리배치도 ***")
+
+customer = int(input("입장객 수: "))  
+col_num = int(input("좌석 열 수: "))
+row_num = 0  #좌석 줄 수
+
+if customer % col_num == 0:
+    row_num = customer / col_num
+else:
+    row_num = int(customer / col_num) + 1
+#print(str(row_num) + "개의 줄이 필요합니다.")
+
+
+for i in range(0, row_num):
+    for j in range(1, col_num+1):
+        seat_num = col_num*i+j
+        if seat_num > customer:
+           break 
+        print(seat_num, end=' ')
+    print()
+"""
+    
+
+
+
+
+
 
 
 
