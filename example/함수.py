@@ -116,3 +116,53 @@ count = 1 # 중복 개수
 result = find_same_name(name)
 print(result)
 """
+
+# 전역 변수
+"""
+def one_up():
+    global x
+    x += 1
+    return x
+
+x = 1
+print(one_up())
+print(one_up())
+print(one_up())
+
+# 배수
+def times(x):
+    global count
+    for i in range(1, 101):
+        if i % x == 0:
+            count += 1
+            print(i, end=' ')
+
+count = 0
+times(3)
+print(f'\n배수의 개수 : {count}')
+"""
+
+# 내장 함수
+print(abs(-3))
+print(round(3.67))
+print(pow(2, 4))
+
+def my_pow(x, y):
+    num = 1
+    for i in range(0, y):
+        num = num * x
+    return num
+
+print(my_pow(2, 4))
+
+
+
+
+
+
+
+
+
+
+
+

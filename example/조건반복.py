@@ -27,10 +27,15 @@ print(num + 5)
 
 # 나이 계산 프로그램
 """
-current_year = 2023
-birth_year =input("태어난 년도를 입력하세요: ")
-age = current_year - int(birth_year) + 1
-print(age)
+while True:
+    try:
+        current_year = 2023
+        birth_year = int(input("태어난 년도를 입력하세요: "))
+        age = current_year - birth_year + 1
+        print(age)
+        break
+    except:
+        print("숫자를 입력해주세요")
 """
 
 # 놀이 공원 입장료 계산
@@ -53,7 +58,6 @@ else:
 
 print("입장료는 " + str(charge) + "원입니다." )
 """
-
 
 # 자리배치도 프로그램
 """
@@ -155,28 +159,29 @@ while True:
         print("정상 답변이 아닙니다.")
 """
 
-"""
 # 커피 자동판매기 프로그램
 coffee = 5
 
 while True:
-    coin = int(input("돈을 넣어주세요: "))
+    try:
+        coin = int(input("돈을 넣어주세요: "))
     
-    if coin == 400:
-        print("커피가 나옵니다.")
-        coffee = coffee - 1
-    elif coin > 400:
-        print("커피가 나오고, 거스름돈", coin-400, "원을 돌려 받습니다.")
-        coffee = coffee - 1
-    else:
-        print("커피가 나오지 않습니다.")
-    print("남은 커피의 양은", coffee, "개입니다.")
+        if coin == 400:
+            print("커피가 나옵니다.")
+            coffee = coffee - 1
+        elif coin > 400:
+            print("커피가 나오고, 거스름돈", coin-400, "원을 돌려 받습니다.")
+            coffee = coffee - 1
+        else:
+            print("커피가 나오지 않습니다.")
+        print("남은 커피의 양은", coffee, "개입니다.")
     
-    if coffee == 0:
-        print("커피가 모두 소진되었습니다. 판매를 중지합니다.")
+        if coffee == 0:
+            print("커피가 모두 소진되었습니다. 판매를 중지합니다.")
+            break
         break
-
-"""
+    except:
+        print("숫자를 입력해주세요")
 
 # 1부터 10까지 합계
 """
@@ -197,11 +202,17 @@ for i in range(1, 11):
     if i % 2 == 0:
         sum_v2 = sum_v2 + i
 print("짝수 합계:", sum_v2)
+"""
 
 # 구구단
+"""
 dan = int(input("단을 입력하세요: "))
+result = ""
 for i in range(1, 10):
-    print(f'{dan} x {i} = {dan*i}')
+    #current_val = f'{dan} x {i} = {dan*i}\n'
+    current_val = "{} x {} = {}\n".format(dan, i, dan*i)
+    result += current_val
+print(result)
 """
 
 # 중첩 for
@@ -211,6 +222,7 @@ for i in range(5):
         print('$', end='')
     print()
 print('='*30)
+
 for i in range(0, 5):
     for j in range(0, i+1):
         print('*', end='')
@@ -252,7 +264,7 @@ result_val = ''
 for i in range(start_dan, end_dan+1):
     for j in range(1, 10):
         #current_val = '{}x{}={}\n'.format(i, j, i*j)
-        current_val = f'{i} x {j} = {i * j}\n'
+        current_val = f'{i} x {j} = {i*j}\n'
         result_val = result_val + current_val
 print(result_val)
 
@@ -261,17 +273,16 @@ style = input("단을 구분할 줄 모양 입력: ")
 result_val = ''
 for i in range(2, 10):
     for j in range(1, 10):
-        current_val = f'{i} x {j} = {i * j}\n'
-        result_val = result_val + current_val
+        current_val = f'{i} x {j} = {i*j}\n'
+        result_val += current_val
     if i <= 9:
-        result_val = result_val + style + '\n'
+        result_val += style + '\n'
 print(result_val)
 """
     
 # 자리배치도 프로그램(완성)
 """
 print("*** 자리배치도 ***")
-
 customer = int(input("입장객 수: "))  
 col_num = int(input("좌석 열 수: "))
 row_num = 0  #좌석 줄 수

@@ -69,10 +69,8 @@ print("평균:", avg)
 
 # 내장함수 sum()
 print("합계:", sum(score))
-"""
 
 # 최고 점수, 최저 점수
-"""
 max_v = score[0]
 min_v = score[0]
 
@@ -106,7 +104,7 @@ for i in range(count):
         min_idx = i
         
 print("최고 점수 위치:", max_idx)
-print("최고 점수 위치:", min_idx)
+print("최저 점수 위치:", min_idx)
 """
 
 # 리스트 주요 함수(메서드)
@@ -130,7 +128,6 @@ print(len(car))
 """
 
 # 리스트 복사
-
 d = [1, 2, 3, 4]
 d2 = []
 print("d =", d)
@@ -148,7 +145,6 @@ print("d3 =", d3)
 
 dd3 = [ i * 3 for i in d]
 print("dd3 =", dd3)
-
 
 # 홀수만 복사하기
 d4 = []
@@ -293,18 +289,21 @@ student = [
     {"name":"최지능", "kor":70, "eng":90, "math":90}
 
 ]
+
+print(student[0])
+for std in student:
+    print(std["name"], std['kor'], std['eng'], std['math'])
+
 print(" 이름  국어 영어 수학")
 for std in student:
-    print("%s  %d   %d   %d"  % (std["name"], std["kor"], std["eng"], std["math"]))
-
-print("="*30)
-
+    print(f'{std["name"]}  {std["kor"]}  {std["eng"]}  {std["math"]}')
+    
 # 개인별 총점과 평균
-print(" 이름   총점  평균")
+print(" 이름  총점 평균")
 for std in student:
     total = std["kor"] + std["eng"] + std["math"]
     avg = total / 3
-    print("%s  %d   %.1f"  % (std["name"], total, avg))
+    print(f'{std["name"]} {total}  {avg:0.1f}')
 
 # 과목별 총점과 평균
 sum_subj = [0, 0, 0]
@@ -314,12 +313,11 @@ for std in student:
     sum_subj[0] += std["kor"]
     sum_subj[1] += std["eng"]
     sum_subj[2] += std["math"]
-
+    
 print("== 과목별 총점 ==")
-print("국어 총점 : %d점" % sum_subj[0])
-print("영어 총점 : %d점" % sum_subj[1])
-print("수학 총점 : %d점" % sum_subj[2])
-
+print(f'국어 총점 : {sum_subj[0]}')
+print(f'영어 총점 : {sum_subj[1]}')
+print(f'수학 총점 : {sum_subj[2]}')
 
 for std in student:
     avg_subj[0] = sum_subj[0] / len(student)
@@ -327,14 +325,14 @@ for std in student:
     avg_subj[2] = sum_subj[2] / len(student)
     
 print("== 과목별 평균 ==")
-print("국어 평균 : %.1f점" % avg_subj[0])
-print("영어 평균 : %.1f점" % avg_subj[1])
-print("수학 평균 : %.1f점" % avg_subj[2])
+print(f'국어 평균 : {avg_subj[0]}')
+print(f'영어 평균 : {avg_subj[1]}')
+print(f'수학 평균 : {avg_subj[2]}')
 
 """
 
 # 용어 사전 만들기
-
+"""
 print("♠ 용어 사전 ♠")
 word = input("정의되어 있는 단어를 입력하세요: ")
 
@@ -351,7 +349,7 @@ try:
 except KeyError:
     print("정의된 단어가 없습니다.")
 
-
+"""
 
 
 
