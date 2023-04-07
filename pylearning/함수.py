@@ -4,7 +4,6 @@ def gugudan(dan):
     for i in range(1, 10):
         print(dan, "x", i, '=', dan * i)
 
-
 gugudan(5)
 """
 
@@ -46,16 +45,12 @@ print("num2 =", num2)
 """
 def get_average(a):
     sum_v = 0
-    avg_v = 0.0
     for i in a:
         sum_v += i
+    return sum_v /len(a)
 
-    return sum_v / len(a)
-
-v = [1, 2, 3, 4, 5]
-average = get_average(v)
-
-print("평균: ", average)
+v = [1, 2, 3, 4]
+print(f'평균: {get_average(v)}')
 """
 
 # 최대값과 최대값의 위치 구하기
@@ -90,7 +85,7 @@ print("최대값의 위치:", max_index)
 def times(a):
     a2 = []
     for i in a:
-        a2.append(i * 4)
+        a2.append(3*i)
     return a2
 
 v = [1, 2, 3, 4]
@@ -99,23 +94,30 @@ print(v2)
 """
 
 # 동명이인 찾기
-"""
 def find_same_name(a):
-    same_name = set()  # 집합 자료구조
+    same_name = set()
     n = len(a)
-    global count
+    global count;
     for i in range(0, n-1):
         for j in range(i+1, n):
             if a[i] == a[j]:
                 same_name.add(a[i])
+                count += 1
     return same_name
+    """
+    i=0, j=1, a[0] == a[1]
+         j=2, a[0] == a[2]  
+         j=3, a[0] == a[3]
+    i=1, j=2, a[1] == a[2]  
+         j=3, a[1] == a[3] '을지문덕'
+    i=2, j=3, a[2] == a[3]
+         
+    """ 
+name = ['이순신', '을지문덕', '강감찬', '을지문덕', '강감찬']
+count = 0
+print(find_same_name(name))
+print(f'중복 개수 : {count}')
 
-
-name = ['콩쥐', '흥부', '팥쥐', '흥부', '콩쥐']
-count = 1 # 중복 개수
-result = find_same_name(name)
-print(result)
-"""
 
 # 전역 변수
 """
@@ -128,21 +130,23 @@ x = 1
 print(one_up())
 print(one_up())
 print(one_up())
+"""
 
-# 배수
+# 30까지의 배수 
 def times(x):
     global count
-    for i in range(1, 101):
+    for i in range(1, 31):
         if i % x == 0:
             count += 1
             print(i, end=' ')
 
 count = 0
-times(3)
+times(4)
 print(f'\n배수의 개수 : {count}')
-"""
+
 
 # 내장 함수
+
 print(abs(-3))
 print(round(3.67))
 print(pow(2, 4))
@@ -152,6 +156,13 @@ def my_pow(x, y):
     for i in range(0, y):
         num = num * x
     return num
+
+    """
+    i=0, num = 1*2
+    i=1, num = (2)*2
+    i=2, num = (2)*2*2
+    i=3, num = (2)*2*2*2
+    """
 
 print(my_pow(2, 4))
 

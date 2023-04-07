@@ -13,7 +13,7 @@ s = Student() # 객체 생성
 print(s.name, "학생은", s.grade, "학년입니다.")
 s.learn()
 print(s)  # 객체 출력
-print(type(s)) # 자료형 : 클래스 
+print(type(s)) # 자료형 : 클래스
 """
 
 # 생성자(constructor)
@@ -31,10 +31,10 @@ print(s1.name, "학생은", s1.grade, "학년입니다.")
 s1.learn()
 
 s2 = Student("이둘", 3)
-print(s2.name + " 학생은 " + str(s2.grade) + "학년입니다.")
+#print(s2.name + " 학생은 " + str(s2.grade) + "학년입니다.")
+print(f'{s2.name} 학생은 {s2.grade}학년입니다.')
 s2.learn()
-"""
-"""
+
 # __str__(self)
 class Student:
     def __init__(self, name, grade):
@@ -78,7 +78,6 @@ plane = AirPlane()
 plane.take_off()
 plane.fly()
 plane.land()
-
 """
 
 # 계산기 클래스
@@ -92,9 +91,8 @@ class Calculator:
         return self.x
 
     def sub(self, y):
-        self.x = self.x -y
+        self.x = self.x - y
         return self.x
-
 
 c1 = Calculator()
 print(c1.add(10))
@@ -104,7 +102,6 @@ print(c1.sub(4))
 # 인스턴스 리스트
 """
 class Dog:
-
     def __init__(self, name):
         self.name = name
         self.tricks = []
@@ -112,19 +109,17 @@ class Dog:
     def add_trick(self, trick):
         self.tricks.append(trick)
 
-
-dog1 = Dog("기쁨이")
-dog2 = Dog("사랑이")
+dog1 = Dog("기쁨")
+dog2 = Dog("사랑")
 
 dog1.add_trick('몸 뒤집기')
 print(dog1.tricks)
 
 dog2.add_trick("죽은 척 하기")
 print(dog2.tricks)
-"""
 
 # 정적(고정) 클래스
-"""
+
 class Dog:
     kind = "진돗개"  #클래스 변수
 
@@ -141,11 +136,9 @@ print(dog2.name)  # dog2만 유일
 print(dog1.kind)
 print(dog2.kind)
 # 클래스 이름으로 직접 접근(올바른 유형)
-print(Dog.kind)   
-"""
+print(Dog.kind)
 
 # 클래스 리스트
-"""
 class Cart:
     li = []
 
@@ -169,6 +162,7 @@ print(cart3.li)
 for i in Cart.li:
     print(i)
 """
+
 # 클래스 리스트 인덱싱
 """
 class City:
@@ -209,6 +203,7 @@ print("사원번호 :", e1.get_id())
 """
 
 # 초음속 비행기
+"""
 class AirPlane:
     def __init__(self):
         pass
@@ -243,9 +238,11 @@ sa.fly()
 sa.fly_mode = SuperSonicAirPlane.NORMAL
 sa.fly()
 sa.land()
+"""
 
 # 단위 변환 클래스(상속)
 # 1inch = 25.4mm
+
 class ScaleConverter:
     def __init__(self, units_from, units_to, factor):
         self.units_from = units_from
@@ -258,7 +255,8 @@ class ScaleConverter:
 if __name__ == "__main__":
     con = ScaleConverter("inches", "mm", 25)
     print("Converting 2 inches")
-    print(str(con.convert(2)) + con.units_to)
+    # print(str(con.convert(2)) + con.units_to)
+    print(f'{con.convert(2)}{con.units_to}')
 
 # 단위 변환 클래스
 # F = C x 1.8 + 32
@@ -272,8 +270,8 @@ class Converter(ScaleConverter):
 
 conv = Converter('C', 'F', 1.8, 32)
 print("Convert 20C")
-print(str(conv.convert(20)) + conv.units_to)
-
+#print(str(conv.convert(20)) + conv.units_to)
+print(f'{conv.convert(21):.2f}{conv.units_to}')
     
 
 

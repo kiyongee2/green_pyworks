@@ -128,6 +128,7 @@ print(len(car))
 """
 
 # 리스트 복사
+"""
 d = [1, 2, 3, 4]
 d2 = []
 print("d =", d)
@@ -155,52 +156,25 @@ print("d4 =", d4)
 
 dd4 = [i for i in d if i % 2 == 1] 
 print("dd4 =", dd4)
-
-
-# 2차원 리스트의 선언 및 생성
 """
-d = [
-    [10, 20],
-    [30, 40],
-    [50, 60]
-]
-print(d[0][0])
-print(d[0][1])
-print(d[1][0])
-print(d[1][1])
 
-for x, y in d:
-    print(x, y)
+# 문자열 함수
+"""
+fruit = "banana, grape, kiwi"
+s = fruit.split(',')
+print(s)
 
-print(len(d))
-print(len(d[0]))
+msg = "Hello, World"
+msg = msg.replace("World", "Korea")
+print(msg)
 
-for i in range(len(d)):
-    for j in range(len(d[i])):
-        print(d[i][j])
-    print()
+print(msg.find("H"))
+print(msg.find(" "))
+print(msg.find("x"))
 
-# 요소 추가
-d.append([70, 80])
-print(d)
-
-# 2차원 리스트의 연산
-sum_v = 0
-count = 0
-avg = 0.0
-
-for i in range(len(d)):
-    for j in range(len(d[i])):
-        count += 1
-        sum_v += d[i][j]
-avg = sum_v / count
-
-print("합계:", sum_v)
-print("개수:", count)
-print("평균:", avg)
-
-# 성적 통계
-
+str = "  hi, soo "
+print(str.lstrip())
+print(str.rstrip())
 """
 
 # 튜플
@@ -214,8 +188,10 @@ print(t2[-1])
 
 # t2[0] = 5
 #del t2[1]
+"""
 
 # set
+"""
 s = {2, 4, 6, 8}
 print(s)
 
@@ -234,13 +210,12 @@ print(s2)
 s2.add(1)
 print(s2)
 
+# 중복 제거
 a = [1, 1, 1, 2, 3, 3]
 set_v = set(a)
 
 print(set_v)
 print(list(set_v))
-
-# 합집합, 교집합, 차집합
 """
 
 # 딕셔너리
@@ -281,29 +256,29 @@ for key, val in d.items():
 """
 
 # 학생의 성적 통계
-"""
 student = [
     {"name":"이대한", "kor":80, "eng":80, "math":75},
     {"name":"박민국", "kor":70, "eng":65, "math":60},
     {"name":"오상식", "kor":75, "eng":70, "math":50},
     {"name":"최지능", "kor":70, "eng":90, "math":90}
-
 ]
 
 print(student[0])
 for std in student:
     print(std["name"], std['kor'], std['eng'], std['math'])
 
+print("== 개인별 성적표 ==")
 print(" 이름  국어 영어 수학")
 for std in student:
     print(f'{std["name"]}  {std["kor"]}  {std["eng"]}  {std["math"]}')
     
 # 개인별 총점과 평균
-print(" 이름  총점 평균")
+print("== 개인별 총점과 평균 ==")
+print(" 이름  총점  평균")
 for std in student:
     total = std["kor"] + std["eng"] + std["math"]
     avg = total / 3
-    print(f'{std["name"]} {total}  {avg:0.1f}')
+    print(f'{std["name"]} {total} {avg:0.1f}')
 
 # 과목별 총점과 평균
 sum_subj = [0, 0, 0]
@@ -329,8 +304,6 @@ print(f'국어 평균 : {avg_subj[0]}')
 print(f'영어 평균 : {avg_subj[1]}')
 print(f'수학 평균 : {avg_subj[2]}')
 
-"""
-
 # 용어 사전 만들기
 """
 print("♠ 용어 사전 ♠")
@@ -351,11 +324,46 @@ except KeyError:
 
 """
 
+# 2차원 리스트의 선언 및 생성
+"""
+d = [
+    [10, 20],
+    [30, 40],
+    [50, 60]
+]
+print(d[0][0])
+print(d[0][1])
+print(d[1][0])
+print(d[1][1])
 
+for x, y in d:
+    print(x, y)
 
-    
+print(len(d))  # 행의 크기
+print(len(d[0]))
 
+for i in range(len(d)):
+    for j in range(len(d[i])):
+        print(d[i][j])
+    print()
 
+# 요소 추가
+d.append([70, 80])
+print(d)
 
+# 2차원 리스트의 연산
+sum_v = 0
+count = 0
+
+for i in range(len(d)):
+    for j in range(len(d[i])):
+        count += 1
+        sum_v += d[i][j]
+avg = sum_v / count
+
+print("합계:", sum_v)
+print("개수:", count)
+print("평균:", avg)
+"""
 
 
