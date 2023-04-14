@@ -180,3 +180,15 @@ print("***** 학생 명단 *****")
 for s in student:
     print(s)
 """
+
+# mylib 패키지 사용하기
+"""
+from mylib import food
+
+print('이름 : ', food.name)
+food.cook()
+"""
+
+from mylib.food import cook, eat
+cook()
+eat()

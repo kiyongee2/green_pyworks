@@ -1,20 +1,21 @@
 # requests 모듈
-"""
 import requests
+from bs4 import BeautifulSoup
 
-url = "https://www.python.org"
+"""
+url = "http://giyong.info"
 response = requests.get(url)
 #print(response)
 html = response.text
 print(html)
 """
 
-# BeautifulSoup
+# html 태그 만들어 연습하기
 """
-from bs4 import BeautifulSoup
-
 html_str = '''
 <html>
+    <head>
+    </head>
     <body>
         <ul class='item'>
             <li>인공지능</li>
@@ -27,35 +28,36 @@ html_str = '''
 
 soup = BeautifulSoup(html_str, "html.parser")
 first_ul = soup.find('ul', attrs={'class':'item'})
-print(first_ul)
-print(first_ul.text)
+# print(first_ul)
+# print(first_ul.text)
 
+# 리스트에 저장
 all_li = first_ul.findAll('li')
 print(all_li)
-print(all_li[1].text)
+# print(all_li[1].text)
 
 for li in all_li:
     print(li.text)
-
 """
 
 # Naver에서 필요한 정보 추출
-import requests
-from bs4 import BeautifulSoup
-"""
+
 url = "http://www.naver.com"
 response = requests.get(url)
 html = BeautifulSoup(response.text, 'html.parser')
-
 find_div = html.find('div', attrs={'class':'service_area'})
 #print(find_div)
-all_a = find_div.findAll('a')
-print(all_a[0].text)
 first_a = find_div.find('a')
 print(first_a.text)
-"""
+
+all_a = find_div.findAll('a')
+print(all_a[0])
+print(all_a[0].text)
+
+
 
 # Naver 증권 > 시장지표 > 환전 고시 환율
+"""
 url = "https://finance.naver.com/marketindex"
 response = requests.get(url)
 html = BeautifulSoup(response.text, 'html.parser')
@@ -79,7 +81,7 @@ for li in all_li:
     value = li.find('span', attrs={'class':'value'})
     #print(exchange.text, ':', value.text)
     print(exchange.text.split(' ')[-1], ':', value.text)
-
+"""
 
 
 
