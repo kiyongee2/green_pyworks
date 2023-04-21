@@ -104,25 +104,49 @@ else:
     print("지하철을 탄다.")
 """
 
-# 체질량 지수 BMI 계산하기
-# bmi = 몸무게 / 키 ** 2(키의 제곱)
-"""
-name = input("이름을 입력하세요: ")
-height = float(input("키를 입력하세요: "))
-height = height / 100  # m -> cm로 환산
-weight = float(input("몸무게를 입력하세요: "))
+# 체질량 지수 = 몸무게 / 키(m)의 제곱
+# 키 = 키 / 100 -> cm로 환산
+# 거듭제곱 3 ** 2 = 3 x 3
+name = input("이름을 입력하세요 : ")
+weight = float(input("몸무게(kg)를 입력하세요 : "))
+height = float(input("키(cm)를 입력하세요 : "))
+height = height / 100  # cm로 환산
 
+# 체질량 지수
 bmi = weight / (height ** 2)
-print("%s님의 bmi는 %.1f입니다." % (name, bmi))
+
+print(f'{name}님의 bmi는 {bmi:.2f}')
+#print("%s님의 bmi는 %.2f입니다." % (name, bmi))
 
 if bmi < 20:
-    print("저체중입니다.")
-elif bmi >= 20 and bmi < 25:
-    print("정상입니다.")
-elif bmi >= 25 and bmi < 30:
-    print("과체중입니다.")
+    print('저체중입니다.')
+elif bmi >= 20 and bmi < 24:
+    print('정상입니다.')
+elif bmi >= 24 and bmi < 30:
+    print('과체중입니다.')
 else:
-    print("비만입니다.")
+    print('비만')
+
+# 코로나 백신 접종
+"""
+birth_year = input("출생년도 입력 : ")
+age = 2023 - int(birth_year) + 1
+# print(age)
+if age >= 20 and age <= 65:
+    print("백신 접종 대상")
+
+    if birth_year[-1] == '1' or birth_year[-1] == '6':
+        print("월요일 접종")
+    elif birth_year[-1] == '2' or birth_year[-1] == '7':
+        print("화요일 접종")
+    elif birth_year[-1] == '3' or birth_year[-1] == '8':
+        print("수요일 접종")
+    elif birth_year[-1] == '4' or birth_year[-1] == '9':
+        print("목요일 접종")
+    else:
+        print("금요일 접종")
+else:
+    print("하반기 일정 확인")
 """
 
 # 1부터 10까지 합계

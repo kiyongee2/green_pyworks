@@ -218,6 +218,20 @@ print(set_v)
 print(list(set_v))
 """
 
+A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+print(A)
+print(B)
+
+print(A | B)
+print(A & B)
+print(A - B)
+
+C = { x for x in range(1, 11)}
+D = { x for x in range(1, 11) if x % 3 == 0}
+print(C)
+print(D)
+
 # 딕셔너리
 """
 p = {}
@@ -256,6 +270,7 @@ for key, val in d.items():
 """
 
 # 학생의 성적 통계
+"""
 student = [
     {"name":"이대한", "kor":80, "eng":80, "math":75},
     {"name":"박민국", "kor":70, "eng":65, "math":60},
@@ -303,20 +318,21 @@ print("== 과목별 평균 ==")
 print(f'국어 평균 : {avg_subj[0]}')
 print(f'영어 평균 : {avg_subj[1]}')
 print(f'수학 평균 : {avg_subj[2]}')
+"""
 
 # 용어 사전 만들기
 """
 print("♠ 용어 사전 ♠")
-word = input("정의되어 있는 단어를 입력하세요: ")
-
-dic = {
-    "알고리즘": "어떤 문제를 해결하기 위해 정해진 일련의 절차",
-    "이진수": "컴퓨터가 사용하는 0과 1만으로 이루어진 수",
-    "버그": "프로그램이 적절하게 동작하는 데 실패하거나 오류가 발생하는 코드 조각"
-}
-
 # 예외 처리(비 정상적인 종료를 막아줌) : try ~ except 구문
 try:
+    word = input("정의되어 있는 단어를 입력하세요: ")
+    
+    dic = {
+        "알고리즘": "어떤 문제를 해결하기 위해 정해진 일련의 절차",
+        "이진수": "컴퓨터가 사용하는 0과 1만으로 이루어진 수",
+        "버그": "프로그램이 적절하게 동작하는 데 실패하거나 오류가 발생하는 코드 조각"
+    }
+
     definition = dic[word]
     print(definition)
 except KeyError:
