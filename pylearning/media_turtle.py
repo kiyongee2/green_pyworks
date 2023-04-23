@@ -140,8 +140,8 @@ play()
 """
 
 # 터틀런 심화 버전
-score = 0
 playing = False
+score = 0
 
 # 악당 거북이(빨간색)
 te = t.Turtle()
@@ -182,9 +182,14 @@ def play():
     global playing
     global score
 
+    if playing:
+        t.ontimer(play, 100)
+
     t.forward(10)
-    ang = te.towards(t.pos())
-    te.setheading(ang)
+
+    if random.randint(1, 5) == 3:
+        ang = te.towards(t.pos())
+        te.setheading(ang)
     speed = score + 5
 
     if speed > 15:
@@ -204,8 +209,13 @@ def play():
         start_y = random.randint(-230, 230)
         tf.goto(start_x, start_y)
 
-    if playing:
-        t.ontimer(play, 100)
+def message(m1, m2):
+    t.clear()
+    t.goto(0, 100)
+    t.write(m1, False, "center", ("", 20))
+    t.goto(0, -100)
+    t.write(m2, False, "center", ("", 15))
+    t.home()
 
 t.title("Turtle Run")
 t.setup(500, 500)
@@ -220,5 +230,6 @@ t.onkeypress(turn_left, "Left")
 t.onkeypress(turn_down, "Down")
 t.onkeypress(start, "space")
 t.listen()
+message("Turtle Run", "[Space]")
 
 t.mainloop()

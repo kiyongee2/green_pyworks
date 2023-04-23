@@ -1,6 +1,55 @@
 # 클래스
 """
 class Student:
+    name = ""
+    grade = 0
+
+std1 = Student()
+std1.name = "김하나"
+std1.grade = 1
+print(std1.name, std1.grade)
+
+std2 = Student()
+std2.name = "박둘"
+std2.grade = 2
+print(std2.name, std2.grade)
+
+"""
+"""
+class Student:
+    name = ""
+    grade = 0
+
+    def info(self):
+        print(self.name, self.grade)
+
+std1 = Student()
+std1.name = "김하나"
+std1.grade = 1
+std1.info()
+
+std2 = Student()
+std2.name = "박둘"
+std2.grade = 2
+std2.info()
+"""
+
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def info(self):
+        print(self.name, self.grade)
+
+std1 = Student("김하나", 1)
+std1.info()
+
+std2 = Student("박둘", 2)
+std2.info()
+
+"""
+class Student:
     def __init__(self):
         self.name = "콩쥐"
         self.grade = 1
@@ -242,7 +291,7 @@ sa.land()
 
 # 단위 변환 클래스(상속)
 # 1inch = 25.4mm
-
+"""
 class ScaleConverter:
     def __init__(self, units_from, units_to, factor):
         self.units_from = units_from
@@ -272,7 +321,7 @@ conv = Converter('C', 'F', 1.8, 32)
 print("Convert 20C")
 #print(str(conv.convert(20)) + conv.units_to)
 print(f'{conv.convert(21):.2f}{conv.units_to}')
-    
+"""
 
 
         
