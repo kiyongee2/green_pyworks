@@ -34,12 +34,25 @@ def func(x, y):
     else:
         return x + y
 
-
 num1 = func(10, 20)
 num2 = func(10, 10)
 print("num1 =", num1)
 print("num2 =", num2)
 """
+
+# 1부터 10까지 더하기
+def sum_n(n):
+    sum_v = 0
+    for i in range(1, n+1):
+        sum_v += i
+    return sum_v
+
+def sum_n2(n):
+    sum_v = (n * (n + 1)) // 2
+    return sum_v
+
+print(sum_n(10))
+print(sum_n2(10))
 
 # 리스트를 매개변수로 전달하여 평균 계산하기
 """
@@ -127,7 +140,8 @@ print(one_up())
 print(one_up())
 """
 
-# 30까지의 배수 
+# 30까지의 배수와 개수
+"""
 def times(x):
     global count
     for i in range(1, 31):
@@ -138,10 +152,10 @@ def times(x):
 count = 0
 times(4)
 print(f'\n배수의 개수 : {count}')
-
+"""
 
 # 내장 함수
-
+"""
 print(abs(-3))
 print(round(3.67))
 print(pow(2, 4))
@@ -152,15 +166,13 @@ def my_pow(x, y):
         num = num * x
     return num
 
-    """
-    i=0, num = 1*2
-    i=1, num = (2)*2
-    i=2, num = (2)*2*2
-    i=3, num = (2)*2*2*2
-    """
+    # i=0, num = 1*2
+    # i=1, num = (2)*2
+    # i=2, num = (2)*2*2
+    # i=3, num = (2)*2*2*2
 
 print(my_pow(2, 4))
-
+"""
 
 
 

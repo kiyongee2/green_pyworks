@@ -149,8 +149,9 @@ print(c1.sub(4))
 """
 
 # 인스턴스 리스트
-"""
 class Dog:
+    #tricks = [] 클래스 변수
+
     def __init__(self, name):
         self.name = name
         self.tricks = []
@@ -187,30 +188,45 @@ print(dog2.kind)
 # 클래스 이름으로 직접 접근(올바른 유형)
 print(Dog.kind)
 
+# 카운터
+class Counter:
+    x = 0
+
+    def __init__(self):
+        Counter.x += 1
+
+    def get_count(self):
+        return self.x
+
+c1 = Counter()
+print(c1.get_count())
+
+c2 = Counter()
+print(c2.get_count())
+
 # 클래스 리스트
 class Cart:
     li = []
 
-    def __init__(self, goods):
-        Cart.li.append(goods)
+    def add_cart(self, goods):
+        self.li.append(goods)
 
-    def __str__(self):
-        return Cart.li
+cart1 = Cart()
+cart1.add_cart("계란")
+#print(cart1.li)
+print(Cart.li)
 
-cart1 = Cart("계란")
-print(cart1.li)
+cart2 = Cart()
+cart1.add_cart("두부")
+print(Cart.li)
 
-cart2 = Cart("두부")
-print(cart2.li)
-
-cart3 = Cart("커피")
-print(cart3.li)
-
+cart3 = Cart()
+cart1.add_cart("콩나물")
+print(Cart.li)
 
 # 전체 요소 출력
 for i in Cart.li:
     print(i)
-"""
 
 # 클래스 리스트 인덱싱
 """
@@ -219,7 +235,7 @@ class City:
 
 str = ''
 for i in City.a:
-    str = str + i[0]
+    str += i[0]
 
 print(str)
 """
