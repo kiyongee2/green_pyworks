@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 가입</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h2>회원 목록</h2>
+        </header>
+        <section>
+            <table class="list">
+                <tr>
+                    <th>아이디</th><th>비밀번호</th><th>이름</th><th>성별</th>
+                </tr>
+                <tr>
+                    <td>{{ id }}</td>
+                    <td>{{ pwd }}</td>
+                    <td>{{ name }}</td>
+                    <td>{{ gender }}</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>계절</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h2>컨트롤러에서 데이터 받아오기</h2>
+        </header>
+        <section>
+            <h3>현재 계절 : {{ season }}</h3>
+            <p>{{ seasons }}</p>
+            <ul>
+                {% for season in seasons %}
+                <li>{{ season }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

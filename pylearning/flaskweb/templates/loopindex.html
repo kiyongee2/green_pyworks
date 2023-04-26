@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>계절</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h2>for문 - loop.index 예제</h2>
+        </header>
+        <section>
+            <ul>
+                {% for item in items %}
+                <li>
+                    {{ loop.index }}번 요소 - {{ item }}
+                </li>
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for item in items %}
+                    {% if loop.index < 3 %}
+                    <li>{{ loop.index }}번째 줄입니다.</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

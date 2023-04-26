@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome~</title>
+    <!-- url_for(파일경로) 함수 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h2>메인 페이지</h2>
+        </header>
+        <section>
+            <h3>주소 표시줄에 아래의 경로를 입력하세요</h3>
+            <p>http://127.0.0.1:5000/season 입력 -> 계절 출력</p>
+            <p>http://127.0.0.1:5000/loopindex 입력 -> for문 출력</p>
+            <p>http://127.0.0.1:5000/register 입력 -> 회원 가입</p>
+            <img src="{{ url_for('static', filename='coffee-blue.jpg') }}"
+                 alt="커피잔" id="pic">
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='main-js.js') }}"></script>
+</body>
+</html>
