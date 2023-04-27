@@ -95,21 +95,34 @@ call_10(hello)
 #(lambda s : print(s))('hello')
 
 """
-def times(a):
-    a2 = []
-    for i in a:
-        a2.append(3 * i)
-    return a2
+# map(), filter()
+# list()함수로 리스트를 반환함
+
+def times(x):
+    return 3 * x
 
 v = [1, 2, 3, 4]
-print(times(v))
+print(list(map(times, v))) #일반 함수 호출
 
 times2 = lambda x : 3 * x
-result = map(times2, v)
-print(list(result)) #result 객체를 리스트로 변환
+result = map(times2, v)  # lambda 함수 호출
+print(list(result))
+
+# filter()와 lambda 사용
+# 음의 정수를 출력하시오
+def negative(n):
+    return n < 0
+
+li = [-5, 1, 2, -11, 76]
+print(list(filter(negative, li)))
+
+negative2 = lambda x : x < 0
+value = filter(negative2, li) # lambda 함수 호출
+print(list(value))
 
 # 시간 복잡도 계산하기
 # 1부터 10까지 더하기
+"""
 import time
 start = time.time()
 def sum_n(n):
@@ -126,3 +139,4 @@ print(sum_n(10000000))
 #print(sum_n2(10000000))
 end = time.time()
 print(f"소요 시간 : {(end-start)}초")
+"""

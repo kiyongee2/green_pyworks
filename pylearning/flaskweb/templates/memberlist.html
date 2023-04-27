@@ -10,17 +10,21 @@
         <header>
             <h2>회원 목록</h2>
         </header>
-        <section>
+        <section id="memberlist">
             <table class="list">
-                <tr>
-                    <th>아이디</th><th>비밀번호</th><th>이름</th><th>성별</th>
-                </tr>
-                <tr>
-                    <td>{{ id }}</td>
-                    <td>{{ pwd }}</td>
-                    <td>{{ name }}</td>
-                    <td>{{ gender }}</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>아이디</th><th>비밀번호</th><th>이름</th><th>성별</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ id }}</td>
+                        <td>{{ pwd }}</td>
+                        <td>{{ name }}</td>
+                        <td>{{ gender }}</td>
+                    </tr>
+                </tbody>
             </table>
         </section>
     </div>

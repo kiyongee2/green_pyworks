@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>짝수, 홀수 판정</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h2>짝수/홀수 판정</h2>
+        </header>
+        <section id="even_odd">
+            <form action="" method="post">
+                {% if error_msg %}
+                    <p class="error">{{ error_msg }}</p>
+                {% endif %}
+                <p>
+                    <label>숫자 입력 :</label>
+                    <input type="text" name="num">
+                    <input type="submit" value="전송">
+                </p>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

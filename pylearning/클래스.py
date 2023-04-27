@@ -149,6 +149,7 @@ print(c1.sub(4))
 """
 
 # 인스턴스 리스트
+"""
 class Dog:
     #tricks = [] 클래스 변수
 
@@ -187,8 +188,10 @@ print(dog1.kind)
 print(dog2.kind)
 # 클래스 이름으로 직접 접근(올바른 유형)
 print(Dog.kind)
+"""
 
 # 카운터
+"""
 class Counter:
     x = 0
 
@@ -227,6 +230,7 @@ print(Cart.li)
 # 전체 요소 출력
 for i in Cart.li:
     print(i)
+"""
 
 # 클래스 리스트 인덱싱
 """
@@ -267,80 +271,43 @@ print("나이 :", e1.get_age())
 print("사원번호 :", e1.get_id())
 """
 
-# 초음속 비행기
-"""
-class AirPlane:
-    def __init__(self):
-        pass
+# 사번 자동 부여
+class Employee:
+    #serial_num = 1000
 
-    def take_off(self):
-        print("비행기가 이륙합니다.")
+    # def __init__(self, name):
+    #     Employee.serial_num += 1
+    #     self.id = Employee.serial_num
+    #     self.name = name
 
-    def fly(self):
-        print("비행기가 일반 비행합니다.")
+    def __init__(self, name):
+        self.serial_num = 1000   # 인스턴스 변수
+        self.serial_num += 1
+        self.id = self.serial_num
+        self.name = name
 
-    def land(self):
-        print("비행기가 착륙합니다.")
+    def __str__(self):
+        return "사번 : {},  이름 : {}".format(self.id, self.name)
 
-class SuperSonicAirPlane(AirPlane):
-    NORMAL = 1
-    SUPERSONIC = 2
+e1 = Employee("최사원")
+print(e1)
 
-    def __init__(self):
-        self.fly_mode = SuperSonicAirPlane.NORMAL
+e2 = Employee("안사원")
+print(e2)
 
-    def fly(self):  # 메서드 재정의
-        if self.fly_mode == SuperSonicAirPlane.SUPERSONIC:
-            print("비행기가 초음속으로 비행합니다.")
-        else:
-            super().fly()
+e3 = Employee("한사원")
+print(e3)
 
-sa = SuperSonicAirPlane()
-sa.take_off()
-sa.fly()
-sa.fly_mode = SuperSonicAirPlane.SUPERSONIC
-sa.fly()
-sa.fly_mode = SuperSonicAirPlane.NORMAL
-sa.fly()
-sa.land()
-"""
+# 객체 리스트
+employee = [
+    Employee('구름'),
+    Employee('별'),
+    Employee('행성'),
+    Employee('달')
+]
 
-# 단위 변환 클래스(상속)
-# 1inch = 25.4mm
-"""
-class ScaleConverter:
-    def __init__(self, units_from, units_to, factor):
-        self.units_from = units_from
-        self.units_to = units_to
-        self.factor = factor
-
-    def convert(self, value):
-        return self.factor * value
-
-if __name__ == "__main__":
-    con = ScaleConverter("inches", "mm", 25)
-    print("Converting 2 inches")
-    # print(str(con.convert(2)) + con.units_to)
-    print(f'{con.convert(2)}{con.units_to}')
-
-# 단위 변환 클래스
-# F = C x 1.8 + 32
-class Converter(ScaleConverter):
-    def __init__(self, units_from, units_to, factor, offset):
-        super().__init__(units_from, units_to, factor)
-        self.offset = offset
-
-    def convert(self, value):
-        return self.factor * value + self.offset
-
-conv = Converter('C', 'F', 1.8, 32)
-print("Convert 20C")
-#print(str(conv.convert(20)) + conv.units_to)
-print(f'{conv.convert(21):.2f}{conv.units_to}')
-"""
-
-
-        
+for e in employee:
+    print(e)
 
 
 

@@ -79,6 +79,32 @@ with open("./output/season2.txt", 'r') as f:
     print(season)
 """
 
+# kbo팀 파일에 기록
+"""
+try:
+    team = ['키움', '삼성', '롯데', '두산', '기아',
+            'SSG', 'LG', 'NC', '한화']
+    with open('./output/kbo2023.txt', 'w') as f:
+        for i in team:
+            if i == team[-1]: #team의 마지막 요소에 쉼표 생략
+                f.write(i)
+            else:
+                f.write(i + ", ")
+except:
+    print("파일을 쓸 수 없습니다.")
+
+# kbo2023.txt 읽기
+try:
+    with open('./output/kbo2023.txt', 'r') as f:
+        team = f.read()
+        print(team)
+except FileNotFoundError as e:
+    print(e)
+    print("파일을 읽을 수 없습니다.")
+"""
+
+
+
 # 단어 쓰기 및 랜덤 읽기
 """
 with open("./output/word.txt", 'w') as f:
@@ -99,6 +125,7 @@ with open('./output/word.txt', 'r') as f:
 """
 
 # 입력받아 파일 쓰기
+"""
 try:
     with open("./output/input.txt", 'a') as f:
         while True:
@@ -109,6 +136,7 @@ try:
             f.write('\n')
 except:
     print("파일을 찾을 수 없습니다.")
+"""
 
 # 바이너리 파일(이미지) 읽고 쓰기
 """
@@ -155,3 +183,60 @@ except:
     print("파일을 찾을 수 없습니다.")
 """
 
+# try ~ except ~ else 구문
+# kbo2023.txt를 읽어서 에러가 없으면 콘솔에 출력하기
+"""
+try:
+    with open('./output/kbo2023.txt', 'r') as f:
+        team = f.read()
+except FileNotFoundError:
+    print("파일을 찾을 수 없습니다.")
+else:
+    for i in team:
+        print(i, end='')
+"""
+# 다중 try ~ except 구문
+"""
+try:
+    data = [15, 20, 99, 8, 0]
+    x = input("정수 입력(0~4까지 입력) : ")
+    num = int(x)
+    print(data[num])
+except ValueError as e:
+    print(e)
+    print("숫자를 입력해주세요")
+except IndexError as e:
+    print(e)
+    print("0~4까지 입력해주세요")
+"""
+
+# 예외 미루기
+# 사용하는 곳에서 발생 시킴
+class Animal:
+    def breathe(self):
+        print("숨을 쉰다")
+
+    def cry(self):
+        raise NotImplementedError
+
+class Dog(Animal):
+    def sleep(self):
+        print("강아지가 잠을 잔다")
+
+    def cry(self):
+        print("멍~ 멍~")
+
+class Cat(Animal):
+    def sleep(self):
+        print("고양이가 잠을 잔다")
+
+    # def cry(self):
+    #     print("야~옹 야~옹")
+
+dog = Dog()
+dog.breathe()
+dog.cry()
+
+cat = Cat()
+cat.breathe()
+cat.cry()
