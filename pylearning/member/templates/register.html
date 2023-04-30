@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 가입</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main-js.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
 </head>
 <body>
     <div id="container">
-        <nav>
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="">로그인</a>
-            <a href="{{ url_for('register') }}">회원가입</a>
-            <a href="{{ url_for('memberlist') }}">회원목록</a>
-        </nav>
-        <section id="content">
+        {% include 'navbar.html' %}
+        <div id="main-pic">
+            <img src="{{ url_for('static', filename='images/header1.jpg') }}"
+                 alt="배경 사진" id="pic">
+        </div>
+        <section id="register">
             <h2>회원 가입</h2>
-            <form action="{{ url_for('register') }}" method="post" class="register">
+            <form action="{{ url_for('register') }}" method="post" name="regForm">
                 <fieldset>
                     <ul>
                         <li>
@@ -24,7 +25,11 @@
                         </li>
                         <li>
                             <label>비밀번호</label>
-                            <input type="text" name="passwd">
+                            <input type="password" name="passwd1">
+                        </li>
+                        <li>
+                            <label>비밀번호 확인</label>
+                            <input type="password" name="passwd2">
                         </li>
                         <li>
                             <label>이름</label>
@@ -32,16 +37,18 @@
                         </li>
                         <li>
                             <label>성별</label>
-                            <input type="text" name="gender">
+                            <input type="radio" name="gender" value="남" checked>남
+                            <input type="radio" name="gender" value="여">여
                         </li>
                         <li>
-                            <input type="submit" value="가입">
+                            <input type="button" value="가입" onclick="checkMember()">
                             <input type="reset" value="취소">
                         </li>
                     </ul>
                 </fieldset>
             </form>
         </section>
+        {% include 'footer.html' %}
     </div>
 </body>
 </html>
