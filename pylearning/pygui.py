@@ -91,6 +91,7 @@ output.grid(row=4, column=0, sticky=W)
 """
 
 # 위젯 - 컨트롤 도구
+"""
 class App:
     def __init__(self, master):
         frame = Frame(master)
@@ -116,5 +117,172 @@ root = Tk()
 root.title("UI 구성")
 
 app = App(root)
+"""
+# 온도 변환기 test1
+"""
+class App:
+    def __init__(self, root):
+        frame = Frame(root)
+        frame.pack()
+
+        Label(frame, text='deg C').grid(row=0, column=0)
+        Button(frame, text='변환', command=self.convert).grid(row=1, columnspan=2)
+
+    def convert(self):
+        print("구현되지 않음")
+
+root = Tk()
+root.title("TempConverter")
+
+app = App(root)
+"""
+
+# 온도 변환기 구현
+"""
+# 1inch = 25.4mm
+class ScaleConverter:
+    def __init__(self, units_from, units_to, factor):
+        self.units_from = units_from
+        self.units_to = units_to
+        self.factor = factor
+
+    def convert(self, value):
+        return self.factor * value
+
+if __name__ == "__main__":
+    con = ScaleConverter("inches", "mm", 25)
+    print("Converting 2 inches")
+    # print(str(con.convert(2)) + con.units_to)
+    print(f'{con.convert(2)}{con.units_to}')
+
+    con2 = ScaleConverter("KB", "B", 1024)
+    print("Converting 1 KB")
+    print(str(con2.convert(1)) + con.units_to)
+
+# 단위 변환 클래스
+# F = C x 1.8 + 32
+class Converter(ScaleConverter):
+    def __init__(self, units_from, units_to, factor, offset):
+        super().__init__(units_from, units_to, factor)
+        self.offset = offset
+
+    def convert(self, value):
+        return self.factor * value + self.offset
+
+conv = Converter('C', 'F', 1.8, 32)
+print("Convert 20C")
+#print(str(conv.convert(20)) + conv.units_to)
+print(f'{conv.convert(21):.2f}{conv.units_to}')
+
+class App:
+    def __init__(self, root):
+        self.con = Converter('C', 'F', 1.8, 32)
+        frame = Frame(root)
+        frame.pack()
+
+        Label(frame, text='deg C').grid(row=0, column=0)
+        self.c = DoubleVar()
+        Entry(frame, textvariable=self.c).grid(row=0, column=1)
+
+        Label(frame, text='deg F').grid(row=1, column=0)
+        self.f = DoubleVar()
+        Label(frame, textvariable=self.f).grid(row=1, column=1)
+        Button(frame, text='변환', command=self.convert).grid(row=2, columnspan=2)
+
+    def convert(self):
+        c = self.c.get()
+        con_f = self.con.convert(c) # 화씨온도로 변환
+        con_f = f'{con_f:.2f}F'
+        self.f.set(con_f)  # 계산된 화씨온도를 레이블에 출력
+
+root = Tk()
+root.title("Temperature Converter")
+root.geometry("250x100")
+
+app = App(root)
+
+root.mainloop()
+"""
+# 계산기 숫자 버튼 테스트
+"""
+def click1():
+    display.insert(END, '1')
+
+def click2():
+    display.insert(END, '2')
+
+root = Tk()
+root.title("나의 계산기")
+
+display = Text(root, width=20, height=1, bg='light green')
+display.grid(row=0, column=0)
+
+Button(root, text='1', width=5, command=click1).grid(row=1, column=0)
+Button(root, text='2', width=5, command=click2).grid(row=2, column=0)
+"""
+
+root = Tk()
+root.title("나의 계산기")
+
+# top_row 프레임
+top_row = Frame(root)
+top_row.grid(row=0, column=0, columnspan=2, sticky=N)
+
+display = Entry(top_row, width=50, bg='light green')
+display.grid(row=0, column=0)
+
+def click(key):
+    if key == '=':
+        try:
+            value = eval(display.get())
+            result = str(value)[0:10]
+            display.insert(END, '=' + result)
+        except:
+            display.insert(END, '-->오류')
+    elif key == 'C':
+        display.delete(0, END)
+    else:
+        display.insert(END, key)
+
+# 숫자 버튼 프레임
+num_pad = Frame(root)
+num_pad.grid(row=1, column=0, sticky=W)
+num_pad_list = [
+    '7', '8', '9',
+    '4', '5', '6',
+    '1', '2', '3',
+    '0', '.', '=',
+]
+r = 0
+c = 0
+for btn_txt in num_pad_list:
+    def cmd(x=btn_txt):
+        click(x)
+
+    Button(num_pad, text=btn_txt, width=5, command=cmd).grid(row=r, column=c)
+    c = c + 1
+    if c > 2:
+        c = 0
+        r = r + 1
+
+# 연산자 버튼 프레임
+operator = Frame(root)
+operator.grid(row=1, column=1, sticky=E)
+operator_list = [
+    '*', '/',
+    '+', '-',
+    '(', ')',
+    'C']
+r = 0
+c = 0
+for btn_txt in operator_list:
+    def cmd(x=btn_txt):
+        click(x)
+
+    Button(operator, text=btn_txt, width=5, command=cmd).grid(row=r, column=c)
+    c = c + 1
+    if c > 1:
+        c = 0
+        r = r + 1
 
 root.mainloop()
