@@ -91,7 +91,6 @@ output.grid(row=4, column=0, sticky=W)
 """
 
 # 위젯 - 컨트롤 도구
-"""
 class App:
     def __init__(self, master):
         frame = Frame(master)
@@ -113,11 +112,23 @@ class App:
             listbox.insert(END, item)
         listbox.grid(row=1, column=1)
 
+        # Radio 버튼
+        # 레이아웃 - 버튼 2개를 올릴 프레임을 만듬
+        radio_frame = Frame(frame)
+        radio_selection = StringVar()
+        b1 = Radiobutton(radio_frame, text="left",
+                    variable=radio_selection, value='L')
+        b1.pack(side=LEFT)
+        b2 = Radiobutton(radio_frame, text="right",
+                    variable=radio_selection, value='R')
+        b2.pack(side=RIGHT)
+        radio_frame.grid(row=1, column=2)
+
 root = Tk()
 root.title("UI 구성")
 
 app = App(root)
-"""
+
 # 온도 변환기 test1
 """
 class App:
@@ -221,6 +232,8 @@ Button(root, text='1', width=5, command=click1).grid(row=1, column=0)
 Button(root, text='2', width=5, command=click2).grid(row=2, column=0)
 """
 
+# 계산기 만들기
+"""
 root = Tk()
 root.title("나의 계산기")
 
@@ -284,5 +297,6 @@ for btn_txt in operator_list:
     if c > 1:
         c = 0
         r = r + 1
+"""
 
 root.mainloop()
