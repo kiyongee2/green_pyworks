@@ -88,14 +88,16 @@ url = "https://finance.naver.com/marketindex/"
 response = requests.get(url)
 html = BeautifulSoup(response.text, 'html.parser')
 
+# find(), findAll() 사용
+"""
 ul = html.find('ul', attrs={'class':'data_lst'})
 #print(ul)
 # 첫번째 미국만 추출하기
-li = ul.find('li')
+first_li = ul.find('li')
 # print(li)
-exchange = li.find('span', attrs={'class':'blind'})
+exchange = first_li.find('span', attrs={'class':'blind'})
 print(exchange)
-value = li.find('span', attrs={'class':'value'})
+value = first_li.find('span', attrs={'class':'value'})
 print(value)
 print(exchange.text, ':', value.text)
 
@@ -107,11 +109,93 @@ for li in all_li:
     value = li.find('span', attrs={'class':'value'})
     # print(exchange.text, ':', value.text)
     print(exchange.text.split(' ')[-1], ':', value.text)
+"""
+'''
+# select(), select_one() 사용
+ul = html.select_one('ul.data_lst')
+# print(ul)
+first_li = ul.select_one('li.on') # USD만 검색
+# print(first_ul)
+exchange = first_li.select_one('span.blind')
+print(exchange.string)
+value = first_li.select_one('span.value')
+print(value.string)
+print(exchange.string, ':', value.string)
 
+all_li = ul.select('ul.data_lst li')
+# print(all_li)
 
+for li in all_li:
+    exchange = li.select_one('span.blind')
+    value = li.select_one('span.value')
+    # print(exchange.string, ':', value.string)
+    print(exchange.string.split(' ')[-1], ':', value.string)
+'''
 
+# 주식 정보
+# 주식 1 종목
+"""
+def getcontent():
+    url = 'https://finance.naver.com/item/main.naver?code=086520'
+    response = requests.get(url)
+    content = BeautifulSoup(response.text, 'html.parser')
+    return content
 
+content = getcontent()
+today = content.find('div', attrs={'class':'today'})
+# print(today)
+price = today.find('span', attrs={'class':'blind'})
+print(price.text)
+print(f'에코프로 주가 : {price.text}원')
 
+# 주식 여러 종목
+def getcontent(item_code):
+    url = 'https://finance.naver.com/item/main.naver?code=' + item_code
+    response = requests.get(url)
+    content = BeautifulSoup(response.text, 'html.parser')
+    return content
+
+def getprice(item_code):
+    content = getcontent(item_code)
+    today = content.find('div', attrs={'class': 'today'})
+    price = today.find('span', attrs={'class': 'blind'})
+    return price
+
+에코프로 = getprice('086520')
+네이버 = getprice('035420')
+NCSOFT = getprice('036570')
+
+print(f'에코프로 주가 : {에코프로.text}원')
+print(f'에코프로 주가 : {네이버.text}원')
+print(f'에코프로 주가 : {NCSOFT.text}원')
+"""
+
+# 사진 가져오기(서울 지하철- 위키디피아)
+url = 'https://en.wikipedia.org/wiki/Seoul_Metropolitan_Subway'
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# print(html.head)
+print(soup.title)
+print(soup.title.name)
+print(soup.title.string)
+
+# 지하철 사진 경로
+target_img = soup.find('img',
+    attrs={'alt':'Seoul Metro 2000 series train on Line 2'})
+print(target_img)
+
+# 소스 사진 읽기
+target_img_src = target_img.get('src')
+print("이미지 경로:", target_img_src)
+
+target_img_response = requests.get('http:' + target_img_src)
+print(target_img_response)
+
+# 바이너리 파일 모드로 쓰기
+with open('./output/train.jpg', 'wb') as f:
+    f.write(target_img_response.content) # 이미지: content
+    print("이미지 파일로 저장했습니다.")
 
 
 

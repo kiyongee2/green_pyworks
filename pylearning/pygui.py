@@ -91,6 +91,7 @@ output.grid(row=4, column=0, sticky=W)
 """
 
 # 위젯 - 컨트롤 도구
+'''
 class App:
     def __init__(self, master):
         frame = Frame(master)
@@ -128,6 +129,7 @@ root = Tk()
 root.title("UI 구성")
 
 app = App(root)
+'''
 
 # 온도 변환기 test1
 """
@@ -297,6 +299,39 @@ for btn_txt in operator_list:
     if c > 1:
         c = 0
         r = r + 1
-"""
 
 root.mainloop()
+"""
+
+# 로또 복권 당첨 확인
+from tkinter import *
+import requests
+from bs4 import BeautifulSoup
+
+def lotto():
+    number = entry.get()  #회차 입력 받음
+    url = "https://dhlottery.co.kr/gameResult.do?method=byWin&drwNo={0}".format(number)
+    response = requests.get(url)
+    # print(response.text)
+    soup = BeautifulSoup(response.text, "html.parser")
+    picked_num = soup.find("div", attrs = {'class', 'win_result'})
+    # print(picked_num.text)
+    picked_num_list = picked_num.split('\n')[7:13]
+    bonus = picked_num.split('\n')[-4]
+
+    print('당첨 번호')
+    print(picked_num_list)
+    print('보너스 번호')
+    print(bonus)
+
+window = Tk()
+window.geometry("300x100")
+window.title("로또 당첨")
+#win.option_add("*Font", "고딕 16")
+entry = Entry(window)
+entry.grid(row=0, column=0, sticky=W)
+#entry.pack()
+btn = Button(window, text = '로또 당첨 번호 확인', command=lotto)
+btn.grid(row=1, column=0, sticky=W)
+#btn.config(text = '로또 당첨 번호 확인')
+window.mainloop()
