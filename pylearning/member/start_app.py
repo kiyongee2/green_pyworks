@@ -31,6 +31,8 @@ def register():
         cur = conn.cursor()
         sql = f"INSERT INTO member(memberid, passwd, name, gender) " \
               f"VALUES ('{id}', '{pw}', '{name}', '{gender}')"
+        # 자동 로그인(세션 발급)
+        session['userid'] = request.form['memberid']
         cur.execute(sql)
         conn.commit()
         conn.close()

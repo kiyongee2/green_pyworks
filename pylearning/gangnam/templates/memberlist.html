@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 목록</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main-js.js') }}"></script>
+</head>
+<body>
+    <div id="container">
+        {% if not session %}
+            <script>
+                alert("로그인을 해주세요");
+                location.href = "http://127.0.0.1:5000/login";
+            </script>
+        {% endif %}
+        {% include 'header.html' %}
+        <div id="main-pic">
+            <img src="{{ url_for('static', filename='images/header1.jpg') }}" alt="배경 사진" id="pic">
+        </div>
+        <section id="memberlist">
+            <h2>회원 목록</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th><th>아이디</th><th>비밀번호</th><th>이름</th><th>성별</th><th>가입일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in rs %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ i[0] }}</td>
+                        <td>{{ i[1] }}</td>
+                        <td>{{ i[2] }}</td>
+                        <td>{{ i[3] }}</td>
+                        <td>{{ i[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>
