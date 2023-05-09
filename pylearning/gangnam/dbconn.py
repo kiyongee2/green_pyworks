@@ -49,7 +49,35 @@ def select_board():
         print(board)
     conn.close()
 
+def select_one_board():
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = "SELECT * FROM board WHERE bno = ?"
+    cursor.execute(sql, (1, ))
+    board = cursor.fetchone()
+    print(board)
+    conn.close()
+
+def board_delete():
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = "DELETE FROM board WHERE bno = ?"
+    cursor.execute(sql, (2, ))
+    conn.commit()
+    conn.close()
+
+def board_update():
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = "UPDATE board SET title = ?, content = ? WHERE bno = ?"
+    cursor.execute(sql, ('공지', '공지사항', 6))
+    conn.commit()
+    conn.close()
+
 # create_board()
 # drop_board()
 # insert_board()
+# board_delete()
+board_update()
 select_board()
+# select_one_board()

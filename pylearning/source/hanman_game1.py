@@ -14,7 +14,7 @@ def get_guess(word):
 
 def process_guess(guess, word):
     global lives_remaining
-    lives_remaining = lives_remaining - 1
+    lives_remaining -= 1
     return False
 
 def play():

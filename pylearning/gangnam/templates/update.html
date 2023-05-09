@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 수정</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main-js.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</head>
+<body>
+    <div id="container">
+        {% include 'header.html' %}
+        <div id="main-pic">
+            <img src="{{ url_for('static', filename='images/header1.jpg') }}"
+                 alt="배경 사진" id="pic">
+        </div>
+        <section id="detail">
+            <h2>게시글 수정</h2>
+               <form action="" method="post">
+                   <table>
+                       <tbody>
+                           <tr>
+                               <td><input type="text" name="title" value="{{ board[1]}}"></td>
+                           </tr>
+                           <tr>
+                               <td><textarea name="content">{{ board[2] }}</textarea></td>
+                           </tr>
+                           <tr>
+                               <td><input type="text" name="title" readonly
+                                          value="글쓴이: {{ board[5]}}(작성일: {{ board[3]}})"></td>
+                           </tr>
+                           <tr>
+                               <td>
+                                   <button type="submit">등록</button>
+                                   <button type="reset">취소</button>
+                               </td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </form>
+        </section>
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>

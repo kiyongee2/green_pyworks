@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main-js.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</head>
+<body>
+    <div id="container">
+        {% include 'header.html' %}
+        <div id="main-pic">
+            <img src="{{ url_for('static', filename='images/header1.jpg') }}"
+                 alt="배경 사진" id="pic">
+        </div>
+        <section id="detail">
+            <h2>게시글 상세 보기</h2>
+               <table>
+                   <tbody>
+                       <tr>
+                           <td><input type="text" name="title" value="{{ board[1]}}" readonly></td>
+                       </tr>
+                       <tr>
+                           <td><textarea name="content" readonly>{{ board[2] }}</textarea></td>
+                       </tr>
+                       <tr>
+                           <td><input type="text" name="title"
+                                      value="글쓴이: {{ board[5]}}(작성일: {{ board[3]}})" readonly></td>
+                       </tr>
+                       <tr>
+                           <td>
+                               {% if session['userid'] == board[5] %}
+                               <a href="{{ url_for('update', bno=board[0]) }}">
+                                   <input type="button" value="수정">
+                               </a>
+                               <a onclick="return confirm('정말로 삭제하시겠습니까?')"
+                                  href="{{ url_for('delete', bno=board[0]) }}">
+                                   <button type="button">삭제</button>
+                               </a>
+                               {% endif %}
+                               <a href="{{ url_for('boardlist') }}"><input type="button" value="글목록"></a>
+                           </td>
+                       </tr>
+                   </tbody>
+               </table>
+        </section>
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>

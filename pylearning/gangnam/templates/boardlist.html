@@ -24,7 +24,7 @@
                     {% for board in boardlist %}
                     <tr>
                         <td>{{ board[0] }}</td>
-                        <td>{{ board[1] }}</td>
+                        <td><a href="{{ url_for('detail', bno=board[0]) }}">{{ board[1] }}</a></td>
                         <td>{{ board[3] }}</td>
                         <td>{{ board[4] }}</td>
                         <td>{{ board[5] }}</td>
@@ -32,8 +32,10 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <div>
-                <a href="{{ url_for('writing') }}"><button type="button">글쓰기</button></a>
+            <div class="btnWrite">
+                <a href="{{ url_for('writing') }}">
+                    <button type="button">글쓰기</button>
+                </a>
             </div>
         </section>
         {% include 'footer.html' %}

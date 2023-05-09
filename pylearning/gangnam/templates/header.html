@@ -4,7 +4,7 @@
     </div>
     <nav>
         <ul id="topMenu">
-            {% if session %}
+            {% if session['userid'] %}
             <li><a href="">회원</a>
                 <ul>
                     <li><a href="{{ url_for('register') }}">회원가입</a></li>
@@ -17,7 +17,8 @@
                     <li><a href="{{ url_for('writing')}}">글쓰기</a></li>
                 </ul>
             </li>
-            <li><a href="{{ url_for('logout') }}">로그아웃</a>
+            <li><a href="{{ url_for('logout') }}">
+                <span class="session">({{ session['userid'] }}님)</span>로그아웃</a>
             {% else %}
             <li><a href="">회원</a>
                 <ul>

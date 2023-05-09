@@ -37,15 +37,20 @@
                         </li>
                         <li>
                             <label>성별</label>
-                            <input type="radio" name="gender" value="남" checked>남
-                            <input type="radio" name="gender" value="여">여
-                        </li>
-                        <li>
-                            <input type="button" value="가입" onclick="checkMember()">
-                            <input type="reset" value="취소">
+                            <label class="radio">
+                                <input type="radio" name="gender" value="남" checked>남
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="gender" value="여">여
+                            </label>
                         </li>
                     </ul>
+
                 </fieldset>
+                <div class="button">
+                    <input type="button" value="가입" onclick="checkMember()">
+                    <input type="reset" value="취소">
+                </div>
             </form>
         </section>
         {% include 'footer.html' %}

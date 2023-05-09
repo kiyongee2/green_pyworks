@@ -25,14 +25,14 @@ def print_word_with_blanks(word):
 def get_guess(word):
     print_word_with_blanks(word)
     print('Lives Remaining: ' + str(lives_remaining))
-    guess = input(" Guess a letter or whole word?")
+    guess = input(" Guess a letter or whole word? ")
     return guess
 
 def process_guess(guess, word):
     global lives_remaining
     global guessed_letters
-    lives_remaining = lives_remaining - 1
-    guessed_letters = guessed_letters + guess
+    lives_remaining -= 1
+    guessed_letters += guess
     return False
 
 def play():

@@ -112,5 +112,49 @@ def writing():
     else:
         return render_template('writing.html')
 
+# 게시글 상세 보기
+@app.route('/detail/<int:bno>', methods = ['GET'])
+def detail(bno):
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = f"SELECT * FROM board WHERE bno = {bno}" #숫자 - 따옴표 붙이지 않음
+    cursor.execute(sql)
+    board = cursor.fetchone()
+    conn.close()
+    return render_template('detail.html', board=board)
+
+# 게시글 삭제
+@app.route('/delete/<int:bno>', methods = ['GET'])
+def delete(bno):
+    conn = getconn()
+    cursor = conn.cursor()
+    sql = f"DELETE FROM board WHERE bno = {bno}"
+    cursor.execute(sql)
+    conn.commit()
+    conn.close()
+    return redirect(url_for('boardlist'))
+
+# 게시글 수정
+@app.route('/update/<int:bno>', methods=['GET', 'POST'])
+def update(bno):
+    if request.method == "POST":
+        title = request.form['title']
+        content = request.form['content']
+
+        conn = getconn()
+        cursor = conn.cursor()
+        sql = f"UPDATE board SET title = '{title}', content = '{content}' WHERE bno = {bno}"
+        cursor.execute(sql)
+        conn.commit()
+        conn.close()
+        return redirect(url_for('detail', bno=bno))
+    else:
+        conn = getconn()
+        cursor = conn.cursor()
+        sql = f"SELECT * FROM board WHERE bno = {bno}"
+        cursor.execute(sql)
+        board = cursor.fetchone()
+        conn.close()
+        return render_template('update.html', board=board)
 
 app.run()
