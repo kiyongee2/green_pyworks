@@ -120,6 +120,11 @@ def detail(bno):
     sql = f"SELECT * FROM board WHERE bno = {bno}" #숫자 - 따옴표 붙이지 않음
     cursor.execute(sql)
     board = cursor.fetchone()
+
+    hit = board[4]  #조회수 가져옴
+    sql = f"UPDATE board SET hit = {hit + 1} WHERE bno = {bno}"
+    cursor.execute(sql)
+    conn.commit()
     conn.close()
     return render_template('detail.html', board=board)
 
