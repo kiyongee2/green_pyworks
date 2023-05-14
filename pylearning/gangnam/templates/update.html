@@ -14,7 +14,7 @@
             <img src="{{ url_for('static', filename='images/header1.jpg') }}"
                  alt="배경 사진" id="pic">
         </div>
-        <section id="detail">
+        <section id="update">
             <h2>게시글 수정</h2>
                <form action="" method="post">
                    <table>
@@ -27,11 +27,13 @@
                            </tr>
                            <tr>
                                <td><input type="text" name="title" readonly
-                                          value="글쓴이: {{ board[5]}}(작성일: {{ board[3]}})"></td>
+                                          value="글쓴이: {{ board[6]}} {% if board[4] %}(수정일: {{ board[4] }})
+                                             {% else %} (작성일: {{ board[3] }})
+                                             {% endif %}"></td>
                            </tr>
                            <tr>
                                <td>
-                                   <button type="submit">등록</button>
+                                   <button type="submit">저장</button>
                                    <button type="reset">취소</button>
                                </td>
                            </tr>

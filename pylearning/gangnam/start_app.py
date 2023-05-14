@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, \
     redirect, url_for, session
 import sqlite3
+import datetime
 
 app = Flask(__name__)
 
@@ -98,9 +99,9 @@ def boardlist():
 @app.route('/writing', methods = ['GET', 'POST'])
 def writing():
     if request.method == "POST":
-        title = request.form['title']
-        content = request.form['content']
-        memberid = session.get('userid')
+        title = request.form['title'].replace("'", "''")
+        content = request.form['content'].replace("'", "''")
+        memberid = session.get('userid') #세션 가져오기
 
         conn = getconn()
         cursor = conn.cursor()
@@ -121,7 +122,7 @@ def detail(bno):
     cursor.execute(sql)
     board = cursor.fetchone()
 
-    hit = board[4]  #조회수 가져옴
+    hit = board[5]  #조회수 가져옴
     sql = f"UPDATE board SET hit = {hit + 1} WHERE bno = {bno}"
     cursor.execute(sql)
     conn.commit()
@@ -143,12 +144,15 @@ def delete(bno):
 @app.route('/update/<int:bno>', methods=['GET', 'POST'])
 def update(bno):
     if request.method == "POST":
-        title = request.form['title']
-        content = request.form['content']
+        title = request.form['title'].replace("'", "''")
+        content = request.form['content'].replace("'", "''")
+        now = datetime.datetime.today()  # 현재 날짜와 시간
+        modifydate = now.strftime('%Y-%m-%d. %H:%M:%S') #수정시간
 
         conn = getconn()
         cursor = conn.cursor()
-        sql = f"UPDATE board SET title = '{title}', content = '{content}' WHERE bno = {bno}"
+        sql = f"UPDATE board SET title = '{title}', content = '{content}', " \
+              f"modifydate = '{modifydate}' WHERE bno = {bno}"
         cursor.execute(sql)
         conn.commit()
         conn.close()
