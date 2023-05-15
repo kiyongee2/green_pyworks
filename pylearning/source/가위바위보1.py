@@ -1,6 +1,7 @@
 import random
 import sys
 
+print("♠ 가위 바위 보 게임 ♠")
 가위바위보 = ['가위', '바위', '보']
 
 you = input('당신 : ')

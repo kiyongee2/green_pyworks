@@ -1,7 +1,7 @@
 # 행맨 게임
 import random
 
-words = ['chicken', 'dog', 'cat', 'mouse', 'frog']
+words = ['dog', 'cat', 'monkey', 'chicken', 'horse', 'elephant']
 lives_remaining = 10
 guessed_letters = ''
 
@@ -24,18 +24,17 @@ def pick_a_word():
 
 def get_guess(word):
     print_word_with_blanks(word)
-    print(f'Lives Remaining: {lives_remaining}')
+    print('Lives Remaining:' + str(lives_remaining))
     guess = input(" Guess a letter or whole word? ")
     return guess
 
 def print_word_with_blanks(word):
-    display_word = '';
+    # print('아직 작성하지 않음')
+    display_word = ''
     for letter in word:
-        if guessed_letters.find(letter) > -1:
-            # 글자를 찾음
+        if guessed_letters.find(letter) > -1: # 글자를 찾음
             display_word = display_word + letter
-        else:
-            # 글자를 찾을 수 없음
+        else: # 글자를 찾지 못함
             display_word = display_word + '-'
     print(display_word)
 
@@ -43,8 +42,8 @@ def process_guess(guess, word):
     global lives_remaining
     global guessed_letters
     lives_remaining -= 1
-    guessed_letters += guess
-    if guess == word:  #서로 일치하면 프로그램 종료
+    guessed_letters += guess  #글자가 출력됨
+    if guess == word:  #전체 글자가 일치하면 바로 프로그램 종료
         return True
     return False  # 종료되지 않고 계속 진행
 

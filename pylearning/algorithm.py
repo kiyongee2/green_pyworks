@@ -100,31 +100,40 @@ print(same_name)
 # 특정 값을 찾아서 해당 위치 번호를 돌려줌
 def search_list(a, x):
     n = len(a)
-    for i in range(0, n):
-        if x == a[i]:
-            return i
-
+    for i in range(0, n): # 모든 값을 차례로
+        if x == a[i]:     # x값과 비교하여 같으면
+            return i      # 위치를 돌려줌
     return -1
 
-v = [60, 5, 33, 12, 97, 24]
+v = [60, 5, 33, 12, 97, 24, 12]
 
 print(search_list(v, 5))
 print(search_list(v, 12))
 print(search_list(v, 111))
 
-'''
+def search_list2(a, x):
+    same_num = []
+    n = len(a)
+    for i in range(0, n):
+        if x == a[i]:
+            same_num.append(i)
+    return same_num or -1
+
+print(search_list2(v, 5))
+print(search_list2(v, 12))
+print(search_list(v, 111))
+
+
 n = len(v)
 for i in range(0, n):
     if 12 == v[i]:
         print("찾음")
 
-'''
 
 # 연습 문제
 # 학생 번호를 입력하면 학생 번호에 해당하는 이름을 순차 탐색으로
 # 찾아 돌려주는 함수 만들기
 def search_list(a, x):
-    global name
     n = len(a)
     for i in range(0, n):
         if x == a[i]:
@@ -133,6 +142,7 @@ def search_list(a, x):
     return '?'
 
 v = [60, 5, 33, 12, 97, 24]
+
 name = ['이순신', '강감찬', '서희', '안중근', '유관순', '이율곡']
 
 print(search_list(v, 5))
@@ -141,7 +151,7 @@ print(search_list(v, 111))
 
 # 이분 탐색
 # 리스트에서 특정 숫자 찾기
-
+'''
 def binary_search(a, x):
     start = 0
     end = len(a) - 1
@@ -158,7 +168,7 @@ def binary_search(a, x):
 d = [1, 4, 9, 16, 25, 36, 49, 64, 81]
 print(binary_search(d, 36))
 print(binary_search(d, 50))
-
+'''
 '''
 1차 검색
 mid = 4 d[4] = 25 36 > 25 찾지 못함
