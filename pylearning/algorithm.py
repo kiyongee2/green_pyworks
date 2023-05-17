@@ -151,27 +151,30 @@ print(search_list(v, 111))
 
 # 이분 탐색
 # 리스트에서 특정 숫자 찾기
-'''
 def binary_search(a, x):
     start = 0
     end = len(a) - 1
 
-    while start <= end:
-        mid = (start + end) // 2
-        if x == a[mid]:
+    while start <= end:  #탐색할 범위가 있는 동안 반복
+        mid = (start + end) // 2  # 탐색 범위의 중간 위치
+        if x == a[mid]:  #찾음
             return mid
-        elif x > a[mid]:
+        elif x > a[mid]: #찾는 값이 더 크면 오른쪽 범위를 좁혀 계속 탐색
             start = mid + 1
-        else:
+        else:            #찾는 값이 더 작으면 왼쪽 범위를 좁혀 계속 탐색
             end = mid - 1
+
+    return -1  #찾지 못함
 
 d = [1, 4, 9, 16, 25, 36, 49, 64, 81]
 print(binary_search(d, 36))
 print(binary_search(d, 50))
-'''
+
 '''
 1차 검색
-mid = 4 d[4] = 25 36 > 25 찾지 못함
-start = 36 end = 81 찾음.
-
+1. mid=4 (0+8)/2, d[4]=25, 중간 위치값
+2. 36>25 같지 않음 -> 25의 오른쪽 범위 탐색
+3. mid=6 (5+8)/2  d[6]=49, 중간 위치값
+4. 36<49 같지 않음 -> 49위 왼쪽 범위 탐색
+5. 36 한 개 있음. 찾음. 위치번호 5를 결과값으로 반환함
 '''
