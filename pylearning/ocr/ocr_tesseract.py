@@ -8,14 +8,13 @@ from PIL import Image
 from pytesseract import pytesseract
 
 pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
-img_file = Image.open("source/간판.png")
-text = pytesseract.image_to_string(img_file, lang="kor")
-print(text)
-# print(text.replace(" ", ""))
+img_file = Image.open("source/영수증3.jpg")
+text = pytesseract.image_to_string(img_file, lang="kor+eng")
+print(text.replace(" ", ""))
 
 # 변환된 데이터를 파일에 쓰기
 # 인코딩(encoding) 속성 'utf8'
-with open("output/간판.txt", 'w', encoding='utf8') as f:
+with open("output/영수증3.txt", 'w', encoding='utf8') as f:
     # f.write(text)
     f.write("\n")
     f.write(text.replace(' ', ''))
