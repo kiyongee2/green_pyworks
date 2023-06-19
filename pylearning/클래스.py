@@ -272,6 +272,7 @@ print("사원번호 :", e1.get_id())
 """
 
 # 사번 자동 부여
+"""
 class Employee:
     #serial_num = 1000
 
@@ -308,7 +309,22 @@ employee = [
 
 for e in employee:
     print(e)
+"""
 
+# 중첩 클래스
+class Department:
+    def __init__(self, dname):
+        self.dname = dname
+
+    class Employee:
+        def __init__(self, ename):
+            self.ename = ename
+
+computer = Department("전산실")
+han= Department.Employee("한코딩")
+
+print(computer.dname)
+print(han.ename)
 
 
 
